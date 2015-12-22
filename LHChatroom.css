@@ -1,0 +1,97 @@
+/* 由玥影修改，頻道: https://livehouse.in/channel/239076 */
+
+::-webkit-scrollbar {
+  visibility: hidden;
+}
+
+body {
+  background-color: rgba(0, 0, 0, 0) !important; 
+  margin: 0px auto;
+  overflow: hidden;
+}
+
+/* 隱藏一堆不想看到的東西 */
+
+.nav, .message-input, .emotion-btn {
+  display: none;
+}
+
+/* 隱藏LOGO */
+
+.logo {
+  display: none;
+}
+
+/* 隱藏開播或關閉時間 */
+
+.ng-scope .divider {
+  display: none;
+}
+
+/* 文字區域 */
+
+.chatroom-message {
+  /* 文字陰影，此處設定有框線效果 */
+  /* text-shadow: 0px 0px 5px #000; */
+  /* 文字顏色 */
+  color: #fff !important;
+  /* 文字區域背景 */
+  background-color: rgba(0, 0, 0, 0) !important; 
+}
+
+/* 連結顏色 */
+
+.message-text a {
+  color: #fff;
+}
+
+/* 隱藏訊息時間 */
+
+.ng-scope .message-time {
+  display: none;
+}
+
+/* 文字區域背景 */
+
+.message-list {
+  background-color: rgba(0, 0, 0, 0) !important; 
+}
+
+
+.ng-scope {
+  /* 字型 */
+  font-family: '微軟正黑體';
+  /* 字體大小 */
+  font-size: 18px !important;
+  /* 文字區域背景 */
+  background-color: rgba(0, 0, 0, 0) !important; 
+}
+
+/* 隱藏聊天時間 */
+
+.chat-record li span.date {
+  display: none;
+}
+
+/* 變更實況主標籤樣式 */
+ul.list .message-name.role-master, .message-name.role-master {
+  /*color: #fff;*/
+}
+
+/* 隱藏頭像 */
+
+.message-face {
+  display: none;
+}
+
+/* 隱藏底下框框 */
+.chatroom-send-message {
+    display: none;
+}
+
+.right {
+  /* 視窗內容背景顏色 */
+  background-color: rgba(0, 0, 0, 0) !important;
+  /* 圓角 */
+  border-radius: 5px;
+}

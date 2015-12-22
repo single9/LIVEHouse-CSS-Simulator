@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Starter Template for Bootstrap 3.3.6</title>
+    <link rel="shortcut icon" href="">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="lib/codemirror.css">
+    <link rel="stylesheet" href="theme/ambiance.css">
+    <script src="lib/codemirror.js"></script>
+    <script src="mode/css/css.js"></script>
+    <script src="addon/selection/active-line.js"></script>
+    <script src="addon/edit/matchbrackets.js"></script>
+    <style>body{padding-top:50px; background: #000;}.starter-template{padding:40px 15px;text-align:center;}</style>
+    <style>
+        iframe {
+            border: none;
+        }
+        
+        iframe:focus { 
+            outline: none;
+        }
+
+        iframe[seamless] { 
+            display: block;
+        }
+        
+        .CodeMirror {
+            border: none;
+            height: 500px;
+            border-radius: 10px;
+        }
+    </style>
+
+    <!--[if IE]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">LIVEhouse CSS</a>
+            </div>
+
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="http://single9.github.io/">Home</a></li>
+                    <li><a href="http://single9.github.io/#about">About</a></li>
+                    <li><a href="http://single9.net/about-single9/">Contact</a></li>
+                </ul>
+            </div><!--.nav-collapse -->
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="starter-template">
+            <div class="row">
+                <div class="col-md-6">
+                    <iframe id="frame1" src="room.html" height="500px"></iframe>
+                </div>
+                <div class="col-md-6 text-left" id="in">
+                    <textarea id="ucss" class="form-control" rows="20" height="500px"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script>
+        
+        var $head, css, myCodeMirror;
+        var cssEditor = document.getElementById("ucss");
+        
+        $.ajax({
+            url: './LHChatroom.css',
+            type: 'get',
+            success: function(html) {
+                css = String(html);
+                cssEditor.value = css;
+                myCodeMirror = CodeMirror.fromTextArea(cssEditor, {
+                                    lineNumbers: true,
+                                    styleActiveLine: true,
+                                    matchBrackets: true
+                                });
+                myCodeMirror.setOption("theme", "ambiance");
+                myCodeMirror.setOption("theme", "ambiance");
+                myCodeMirror.on("change", function( me ){
+                    var c = me.getValue();
+                    var x = $("#frame1").contents().find("style");
+                        x[1].remove();
+                    var $head = $("#frame1").contents().find("head");
+                    $head.append("<style>" + c + "</style>");
+                    console.log(c);
+                });
+            }
+        });
+        
+        setTimeout(function(){
+            $head = $("#frame1").contents().find("head");
+            $head.append("<style>" + cssEditor.value + "</style>");
+        }, 500);
+        
+        
+
+    </script>
+</body>
+</html>
